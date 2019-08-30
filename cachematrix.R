@@ -1,3 +1,11 @@
+# Resume ######################################################################
+
+## Matrix inversion is usually a costly computation and there may be some 
+## benefit to caching the inverse of a matrix rather than compute it 
+## repeatedly. That's what the following functions achieve.
+
+# Functions ###################################################################
+
 ## MakeCacheMatrix takes a matrix as an argument and stores it along with a 
 ## list of functions for caching. It then returns the list.
 ## The list is to be used with "cacheSolve()" below.
@@ -32,3 +40,14 @@ cacheSolve <- function(x, ...) {
         x$setinv(inv)
         inv
 }
+
+# Testing #####################################################################
+
+## Uncomment the following section to run an example code (after loading the
+## functions of course).
+
+# my_mat <- matrix(rnorm(25, mean = 2), 5,5)
+# my_mat_inv <- makeCacheMatrix(my_mat)
+# cacheSolve(my_mat_inv)
+# 
+# my_mat %*% cacheSolve(my_mat_inv) # should give an identity matrix
